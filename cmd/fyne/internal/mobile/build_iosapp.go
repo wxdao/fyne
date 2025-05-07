@@ -455,8 +455,6 @@ var projPbxprojTmpl = template.Must(template.New("projPbxproj").Parse(`// !$*UTF
         TargetAttributes = {
           254BB83D1B1FD08900C56DE9 = {
             CreatedOnToolsVersion = 6.3.1;
-            DevelopmentTeam = {{.TeamID}};
-            ProvisioningStyle = {{.Type}};
           };
         };
       };
@@ -542,6 +540,9 @@ var projPbxprojTmpl = template.Must(template.New("projPbxproj").Parse(`// !$*UTF
         INFOPLIST_FILE = main/Info.plist;
         LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
         PRODUCT_NAME = "$(TARGET_NAME)";
+        "CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "{{.Certificate}}";
+        CODE_SIGN_STYLE = Automatic;
+        DEVELOPMENT_TEAM = {{.TeamID}};
       };
       name = Release;
     };
